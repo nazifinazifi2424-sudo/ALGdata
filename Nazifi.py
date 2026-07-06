@@ -8,26 +8,29 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
+# HANDLER NA / start
+
+from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
+
 # HANDLER NA /start
 @bot.message_handler(commands=['start'])
 def welcome_start(message):
     uid = message.from_user.id
 
-    # Kirkiro ReplyKeyboardMarkup na ƙasa
-    # resize_keyboard=True yana sa girmansu ya daidaitu da kowane irin screen na waya
-    kb = ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
+    # 1. Kirkiro InlineKeyboardMarkup (Mabuɗan maƙale ƙarƙashin saƙo)
+    kb = InlineKeyboardMarkup(row_width=2)
 
-    # Kirkiro mabuɗan guda 4 da ka buƙata
-    btn1 = KeyboardButton(text="Data4")
-    btn2 = KeyboardButton(text="Films")
-    btn3 = KeyboardButton(text="Follow")
-    btn4 = KeyboardButton(text="Nazifi")
+    # 2. Kirkiro mabuɗan taɓawa guda 4 daidai yadda kake so
+    btn1 = InlineKeyboardButton(text="Data4", callback_data="data4")
+    btn2 = InlineKeyboardButton(text="Films", callback_data="films")
+    btn3 = InlineKeyboardButton(text="Follow", callback_data="follow")
+    btn4 = InlineKeyboardButton(text="Nazifi", callback_data="nazifi")
 
-    # Jera mabuɗan biyu-biyu kamar yadda ka tsara tsarin
-    kb.add(btn1, btn2)  # Layi na farko: Data4 da Films
-    kb.add(btn3, btn4)  # Layi na biyu: Follow da Nazifi
+    # 3. Jera mabuɗan biyu-biyu a kowane layi ba tare da ɓata tsari ba
+    kb.add(btn1, btn2)  # Layi na farko
+    kb.add(btn3, btn4)  # Layi na biyu
 
-    # Tura saƙon
+    # Tura saƙon tare da mabuɗan Inline
     bot.send_message(
         uid, 
         "Sannu da zuwa! Gashi mabuɗan sun bayyana a ƙasa 👇", 
