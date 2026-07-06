@@ -34,7 +34,22 @@ def welcome_start(message):
 
 
 
-# Wannan zai sa bot ɗin ya ci gaba da aiki ba tare da ya tsaya ba
+from flask import Flask
+import threading
+import os
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Bot is running"
+
+def run_web():
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
+
 if __name__ == "__main__":
-    print("Bot ɗinka ya tashi yana aiki...")
-    bot.infinity_polling()
+    threading.Thread(target=run_web).start()
+    print("Bot dinka ya tashi...")
+    bot.infinity_polling(skip_pending=True)
+
