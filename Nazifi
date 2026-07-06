@@ -4,7 +4,7 @@ from telebot.types import ReplyKeyboardMarkup, KeyboardButton
 
 # 1. SAKA BOT TOKEN DINKA ANAN
 # Za ka iya saka shi kai tsaye ko ta Environment Variable a Render
-BOT_TOKEN = os.getenv("BOT_TOKEN", "SAKA_BOT_TOKEN_DINKA_ANAN")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
