@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ha">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel Mai Kaloli</title>
+    <!-- Wannan script din yana da matukar muhimmanci don hada shafin da Telegram -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            background-color: #18222d; /* Kalar duhu irin ta Telegram */
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h3 {
+            margin-bottom: 25px;
+            font-size: 18px;
+        }
+        /* Tsarukan mabuɗanmu masu kaloli */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            border: none;
+            border-radius: 10px; /* Round corners irin na wancan hoton */
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-green {
+            background-color: #2ca02c; /* Kore */
+            color: white;
+        }
+        .btn-red {
+            background-color: #d62728; /* Ja */
+            color: white;
+        }
+        /* Idan mutum ya taba button din */
+        .btn:active {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>ZABIN MA'AIKACI (ADMIN PANEL) 👇</h3>
+    
+    <!-- Mabuɗi na farko (Kore) -->
+    <button class="btn btn-green" onclick="tuntubiBot('convert_file_video')">📁 Convert File to Video</button>
+    
+    <!-- Mabuɗi na biyu (Ja) -->
+    <button class="btn btn-red" onclick="tuntubiBot('cancel_admin')">❌ Cancel</button>
+
+    <script>
+        // Bayyana wa Telegram cewa Web App ya gama loading
+        Telegram.WebApp.ready();
+
+        // Wannan function din shi zai tura abin da aka danna zuwa bot dinka na Python
+        function tuntubiBot(sako) {
+            Telegram.WebApp.sendData(sako);
+        }
+    </script>
+</body>
+</html>
