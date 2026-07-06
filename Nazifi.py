@@ -9,7 +9,6 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 bot = telebot.TeleBot(BOT_TOKEN)
 
 # HANDLER NA / start
-
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 # HANDLER NA /start
@@ -17,25 +16,23 @@ from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 def welcome_start(message):
     uid = message.from_user.id
 
-    # 1. Kirkiro InlineKeyboardMarkup (Mabuɗan maƙale ƙarƙashin saƙo)
     kb = InlineKeyboardMarkup(row_width=2)
 
-    # 2. Kirkiro mabuɗan taɓawa guda 4 daidai yadda kake so
-    btn1 = InlineKeyboardButton(text="Data4", callback_data="data4")
-    btn2 = InlineKeyboardButton(text="Films", callback_data="films")
-    btn3 = InlineKeyboardButton(text="Follow", callback_data="follow")
-    btn4 = InlineKeyboardButton(text="Nazifi", callback_data="nazifi")
+    btn1 = InlineKeyboardButton("Data4", callback_data="data4")
+    btn2 = InlineKeyboardButton("Films", callback_data="films")
+    btn3 = InlineKeyboardButton("Follow", callback_data="follow")
+    btn4 = InlineKeyboardButton("Nazifi", callback_data="nazifi")
 
-    # 3. Jera mabuɗan biyu-biyu a kowane layi ba tare da ɓata tsari ba
-    kb.add(btn1, btn2)  # Layi na farko
-    kb.add(btn3, btn4)  # Layi na biyu
+    kb.add(btn1, btn2)
+    kb.add(btn3, btn4)
 
-    # Tura saƙon tare da mabuɗan Inline
     bot.send_message(
-        uid, 
-        "Sannu da zuwa! Gashi mabuɗan sun bayyana a ƙasa 👇", 
+        uid,
+        "Sannu da zuwa! 👇",
         reply_markup=kb
     )
+
+
 
 # Wannan zai sa bot ɗin ya ci gaba da aiki ba tare da ya tsaya ba
 if __name__ == "__main__":
