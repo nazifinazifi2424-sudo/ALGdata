@@ -8,6 +8,69 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
+
+# Sanya ainihin Link din shafinka na Render Static Site anan
+
+SHAFIN_HTML = "hh"
+
+
+
+# HANDLER NA /start
+
+@bot.message_handler(commands=['start'])
+
+def welcome_start(message):
+
+    uid = message.from_user.id
+
+
+
+    kb = InlineKeyboardMarkup(row_width=2)
+
+
+
+    # Mabuɗan da ke buɗe Mini App
+
+    btn1 = InlineKeyboardButton("Data4", web_app=WebAppInfo(url=SHAFIN_HTML))
+
+    btn2 = InlineKeyboardButton("Films", web_app=WebAppInfo(url=SHAFIN_HTML))
+
+    btn3 = InlineKeyboardButton("Follow", web_app=WebAppInfo(url=SHAFIN_HTML))
+
+    btn4 = InlineKeyboardButton("Nazifi", web_app=WebAppInfo(url=SHAFIN_HTML))
+
+
+
+    kb.add(btn1, btn2)
+
+    kb.add(btn3, btn4)
+
+
+
+    bot.send_message(
+
+        uid,
+
+        "Sannu da zuwa! 👇",
+
+        reply_markup=kb
+
+    )
+
+
+
+# Karɓar bayani idan an taɓa mabuɗi a Mini App
+
+@bot.message_handler(content_types=['web_app_data'])
+
+def handle_mini_app_data(message):
+
+    uid = message.from_user.id
+
+    shigo_da_data = message.web_app_data.data
+
+    bot.send_message(uid, f"Ka danna mabuɗin: {shigo_da_data.upper()} gata!")
+
 # HANDLER NA / start
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
