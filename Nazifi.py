@@ -11,7 +11,7 @@ bot = telebot.TeleBot(BOT_TOKEN)
 
 # Sanya ainihin Link din shafinka na Render Static Site anan
 
-SHAFIN_HTML = "hh"
+SHAFIN_HTML = "https://html-2zrw.onrender.com"
 
 
 
